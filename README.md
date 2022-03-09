@@ -1,14 +1,59 @@
-# Autograding Example: Java
-This example project is written in Java, and tested with Gradle/JUnit.
+# 課題 10-1: 抽象クラス
 
-### The assignment
-The tests are currently failing because of an output mismatch. Fixing the `System.out.println` in the main method will make the tests green.
+### 課題の説明
+次の抽象クラスCharacterを継承し、次の仕様を満たすHeroクラス（勇者）とClericクラス（聖職者）を作成しなさい。
+ProgA1.javaを変更せずに実行結果が同じになることを確認すること。
 
-### Setup command
-N/A
+- 勇者クラス
+  - コンストラクタで名前とHPを受け取り、初期化する
+  - 攻撃力は5のダメージ
+- 聖職者クラス
+  - MPをもつ
+  - コンストラクタで名前とHPとMPを受け取り、初期化する
+  - 攻撃力は1のダメージ
 
-### Run command
-`gradle test`
 
-### Notes
-- The JDK is installed on GitHub Actions machines, so you're also able to directly invoke `javac`, `java`, or any other CLI command included in the JDK. 
+```java
+public abstract class Character
+{
+    String name;
+    int hp;
+
+    public void run() // 逃げる
+    {
+       System.out.println(this.name + "は逃げ出した。");
+    }
+    
+    public abstract void attack(Slime s);
+}
+```
+
+
+### ProgA1.java (提出不要)
+```java
+public class ProgA1 {
+
+	public static void main(String arg[])
+	{
+		Hero hr = new Hero("工太", 100);
+		Cleric clr = new Cleric("ホーリー",15, 15);
+		Slime slm = new Slime('A');
+		hr.attack(slm);
+		clr.attack(slm);
+		slm.run();
+		clr.run();
+	}
+
+}
+```
+
+### 実行例
+```
+勇者「工太」は攻撃した！
+敵に５ポイントのダメージをあたえた！
+聖職者「ホーリー」は攻撃した！
+敵に1ポイントのダメージをあたえた！
+スライムAは逃げ出した！(HP:12)
+聖職者「ホーリー」は逃げ出した。
+最終HPは15でした。
+```
