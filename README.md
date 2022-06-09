@@ -12,7 +12,7 @@ ProgA1.javaを変更せずに実行結果が同じになることを確認する
   - コンストラクタで名前とHPとMPを受け取り、初期化する
   - 攻撃力は1のダメージ
 
-
+### Characterクラス (変更不可、提出不要)
 ```java
 public abstract class Character
 {
