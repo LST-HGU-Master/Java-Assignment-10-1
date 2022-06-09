@@ -1,9 +1,12 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import java.io.*;
-
+/**
+ * @version (20220606)
+ */
 public class HeroTest {
 
     @Test
@@ -13,7 +16,7 @@ public class HeroTest {
         Hero h = new Hero("太郎", 100);
 
         // assertion
-        assertTrue(h instanceof Character);
+        assertTrue(h instanceof Character,"HeroクラスはCharacterを継承していません!");
     }
 
     @Test
@@ -23,8 +26,8 @@ public class HeroTest {
         Hero h = new Hero("太郎", 148);
 
         // assertion
-        assertEquals("太郎", h.name);
-        assertEquals(148, h.hp);
+        assertEquals("太郎", h.name,"Heroクラスのコンストラクタでnameの初期化が不正です!");
+        assertEquals(148, h.hp,"Heroクラスのコンストラクタでhpの初期化が不正です!");
     }
 
     @Test
@@ -41,12 +44,18 @@ public class HeroTest {
         Hero h = new Hero("二郎", 148);
         Slime m = new Slime('A');
         h.attack(m);
-
-        // assertion
-        assertEquals(13, m.hp);
-        assertEquals("勇者二郎は攻撃した！\n敵に５ポイントのダメージをあたえた！\n", bos.toString());
-
         // undo the binding in System
         System.setOut(originalOut);
+        
+        // assertion
+        String[] prints = bos.toString().split("\r\n|\n", -1); // 値が空の部分も切り出す
+        assertEquals(13, m.hp, "Heroクラスのattack()のhp処理が不正です!");
+        try {
+            assertEquals("勇者二郎は攻撃した！",prints[0],"attack()の最初のprint出力が不正です!");
+            assertEquals("敵に5ポイントのダメージをあたえた！", prints[1],"attack()の二行目のprint出力が不正です!");
+        } catch (ArrayIndexOutOfBoundsException err){
+            fail("Hero.Attack()のprint出力が2行ではありません!");
+        }
+        assertEquals(3,prints.length,"改行数が3つ以上あります!");
     }
 }
