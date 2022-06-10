@@ -1,8 +1,8 @@
 # 課題 10-1: 抽象クラス
 
 ### 課題の説明
-次の抽象クラスCharacterを継承し、次の仕様を満たすHeroクラス（勇者）とClericクラス（聖職者）を作成しなさい。
-ProgA1.javaを変更せずに実行結果が同じになることを確認すること。
+抽象クラスCharacterを継承し、次の仕様を満たすHeroクラス（勇者）とClericクラス（聖職者）を作成しなさい。
+なお、作成後にはProgA1.main()を起動し、その実行結果が実行例と同じになることを確認すること。
 
 - 勇者クラス
   - コンストラクタで名前とHPを受け取り、初期化する
@@ -29,7 +29,7 @@ public abstract class Character
 ```
 
 
-### ProgA1.java (提出不要)
+### ProgA1.java (変更不可、提出不要)
 ```java
 public class ProgA1 {
 
