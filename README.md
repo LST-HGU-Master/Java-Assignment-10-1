@@ -12,7 +12,7 @@
   - コンストラクタで名前とHPとMPを受け取り、初期化する
   - 攻撃力は1のダメージ
 
-### Characterクラス (変更不可、提出不要)
+### Characterクラス (変更・提出不要)
 ```java
 public abstract class Character
 {
@@ -29,7 +29,7 @@ public abstract class Character
 ```
 
 
-### ProgA1.java (変更不可、提出不要)
+### ProgA1.java (変更・提出不要)
 ```java
 public class ProgA1 {
 
