@@ -28,6 +28,7 @@ public abstract class Character
 }
 ```
 
+### Slimeクラスの変更・提出は不要です
 
 ### ProgA1.java (変更・提出不要)
 ```java
