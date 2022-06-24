@@ -22,6 +22,7 @@ public abstract class Character
     public void run() // 逃げる
     {
        System.out.println(this.name + "は逃げ出した。");
+       System.out.println("最終HPは" + this.hp + "でした。");
     }
     
     public abstract void attack(Slime s);
@@ -56,4 +57,5 @@ public class ProgA1 {
 敵に1ポイントのダメージをあたえた！
 スライムAは逃げ出した！(HP:12)
 ホーリーは逃げ出した。
+最終HPは15でした。
 ```
