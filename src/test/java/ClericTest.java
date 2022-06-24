@@ -1,11 +1,12 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-
+import static org.junit.jupiter.api.Assertions.fail;
+import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 /**
- * @version (20220606)
+ * @version (20220624)
  */
 public class ClericTest {
 
@@ -17,6 +18,14 @@ public class ClericTest {
 
         // assertion
         assertTrue(c instanceof Character,"ClericクラスはCharacterを継承していません!");
+        
+        Field [] fields = c.getClass().getDeclaredFields();
+        for( Field fld : fields) {
+            if ( fld.getName() == "name" && fld.getType().toString().equals("class java.lang.String") ) 
+                fail("Clericクラスで「String name;」を宣言してはいけません!（理由がわからない場合は教員に相談しましょう）");
+            if ( fld.getName() == "hp" && fld.getType().toString().equals("int") ) 
+                fail("Clericクラスで「int hp;」を宣言してはいけません!（理由がわからない場合は教員に相談しましょう）");
+        }
     }
 
     @Test
